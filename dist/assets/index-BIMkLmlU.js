@@ -1,9 +1,4 @@
-// js/templates.js
-
-export const templates = {
-
-    // ===== PÁGINA INICIAL =====
-    "index.html": `
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e={"index.html":`
         <section class="hero">
             <div class="hero-conteudo">
                 <h1>Juntos podemos transformar vidas</h1>
@@ -89,10 +84,7 @@ export const templates = {
             <p>Telefone: <a href="tel:+5532999999999">(32) 99999-9999</a></p>
             <p>E-mail: <a href="mailto:contato@institutoesperanca.org">contato@institutoesperanca.org</a></p>
         </address>
-    `,
-
-    // ===== PÁGINA PROJETOS =====
-    "projetos.html": `
+    `,"projetos.html":`
         <section class="hero">
             <div class="hero-conteudo">
                 <h1>Nossos projetos</h1>
@@ -205,10 +197,7 @@ export const templates = {
             <p>Você pode contribuir com seu tempo, conhecimento ou recursos.</p>
             <a href="cadastro.html" data-link>Quero ser voluntário</a>
         </section>
-    `,
-
-    // ===== PÁGINA CADASTRO =====
-    "cadastro.html": `
+    `,"cadastro.html":`
         <section class="hero">
             <div class="hero-conteudo">
                 <h1>Faça parte da nossa equipe</h1>
@@ -382,5 +371,4 @@ export const templates = {
             <p>Obrigado por participar do Instituto Esperança.</p>
             <a href="#" class="toast-fechar" aria-label="Fechar notificação">×</a>
         </div>
-    `
-};
+    `};function t(){let e=document.querySelector(`#cpf`),t=document.querySelector(`#telefone`),n=document.querySelector(`#cep`),r=document.querySelector(`#formCadastro`),i=document.querySelector(`.alerta-sucesso`),a=document.querySelector(`#toast-sucesso`);if(!r||r.dataset.inicializado===`true`)return;r.dataset.inicializado=`true`;let o={nome:`Digite seu nome completo, com pelo menos 3 caracteres.`,email:`Digite um e-mail válido, como exemplo@email.com.`,cpf:`Digite o CPF completo no formato 000.000.000-00.`,telefone:`Digite o telefone completo no formato (00) 90000-0000.`,dataNascimento:`Informe sua data de nascimento.`,cep:`Digite o CEP completo no formato 00000-000.`,endereco:`Digite o nome da rua ou avenida.`,numero:`Digite um número de endereço maior que zero.`,cidade:`Digite o nome da sua cidade.`,estado:`Selecione seu estado.`,area:`Selecione uma área de interesse.`,disponibilidade:`Selecione sua disponibilidade.`,mensagem:`Digite pelo menos 10 caracteres sobre você.`};function s(e,t){let n=e.parentElement.querySelector(`.mensagem-erro`);if(!n)return;let r=!e.checkValidity();e.classList.toggle(`campo-invalido`,t&&r),e.setAttribute(`aria-invalid`,t&&r?`true`:`false`),n.classList.toggle(`visivel`,t&&r)}if(document.querySelectorAll(`.campo input, .campo select, .campo textarea`).forEach(function(e){let t=document.createElement(`small`);t.className=`mensagem-erro`,t.id=`${e.id}-erro`,t.textContent=o[e.id]||`Preencha este campo corretamente.`,e.parentElement.appendChild(t),e.setAttribute(`aria-describedby`,t.id),e.addEventListener(`blur`,function(){e.dataset.tocado=`true`,s(e,!0)}),e.addEventListener(`input`,function(){e.dataset.tocado===`true`&&queueMicrotask(function(){s(e,!0)})})}),e&&e.addEventListener(`input`,function(){let t=e.value.replace(/\D/g,``);t=t.replace(/(\d{3})(\d)/,`$1.$2`),t=t.replace(/(\d{3})(\d)/,`$1.$2`),t=t.replace(/(\d{3})(\d{1,2})$/,`$1-$2`),e.value=t}),t&&t.addEventListener(`input`,function(){let e=t.value.replace(/\D/g,``);e=e.replace(/^(\d{2})(\d)/g,`($1) $2`),e=e.replace(/(\d)(\d{4})$/,`$1-$2`),t.value=e}),n&&n.addEventListener(`input`,function(){let e=n.value.replace(/\D/g,``);e=e.replace(/^(\d{5})(\d)/,`$1-$2`),n.value=e}),r.addEventListener(`submit`,function(e){if(e.preventDefault(),r.querySelectorAll(`.campo input, .campo select, .campo textarea`).forEach(function(e){e.dataset.tocado=`true`,s(e,!0)}),!r.checkValidity()){r.reportValidity();return}r.reset(),r.querySelectorAll(`.campo input, .campo select, .campo textarea`).forEach(function(e){e.dataset.tocado=`false`,s(e,!1)}),i&&(i.hidden=!1),a&&a.classList.add(`visivel`)}),a){let e=a.querySelector(`.toast-fechar`);e&&e.addEventListener(`click`,function(e){e.preventDefault(),a.classList.remove(`visivel`),window.history.replaceState(null,``,window.location.pathname+window.location.search)})}}var n=document.querySelector(`#app`),r={"index.html":`Instituto Esperança | Transformando vidas`,"projetos.html":`Nossos Projetos | Instituto Esperança`,"cadastro.html":`Seja Voluntário | Instituto Esperança`},i=`index.html`;function a(e){if(!e)return i;let t=e.split(`#`)[0].split(`?`)[0];return t=t.replace(/^.*\//,``),t===``||t===`/`?i:r[t]?t:i}async function o(a,{atualizarHistorico:o=!0}={}){n.innerHTML=e[a]||e[i],document.title=r[a]||r[i],window.scrollTo({top:0,behavior:`instant`in window?`instant`:`auto`});let s=document.querySelector(`#menu-toggle`);if(s&&(s.checked=!1),a===`cadastro.html`&&(await new Promise(e=>requestAnimationFrame(e)),t()),o){let e=a===i?`/`:`/${a}`;history.pushState({rota:a},``,e)}}function s(){document.addEventListener(`click`,function(e){let t=e.target.closest(`a[data-link]`);if(!t||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;let n=t.getAttribute(`href`);!n||n.startsWith(`http`)||n.startsWith(`#`)||n.startsWith(`mailto:`)||n.startsWith(`tel:`)||(e.preventDefault(),o(a(n)))})}function c(){window.addEventListener(`popstate`,function(e){o(e.state?.rota||a(window.location.pathname),{atualizarHistorico:!1})})}function l(){s(),c();let e=a(window.location.pathname);o(e,{atualizarHistorico:!1}),history.replaceState({rota:e},``,window.location.pathname)}document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,l):l();
